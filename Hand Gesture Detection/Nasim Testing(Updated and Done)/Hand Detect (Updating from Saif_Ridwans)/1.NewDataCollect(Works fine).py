@@ -10,6 +10,7 @@ if not os.path.exists("data"):
     os.makedirs("data/train/emergency2")
     os.makedirs("data/train/normal_emergency")
     os.makedirs("data/train/background")
+    os.makedirs("data/train/deaf emergency")
 #    os.makedirs("data/train/like")
 #    os.makedirs("data/train/rock")
 
@@ -27,7 +28,7 @@ while True:
              'E2': len(os.listdir(directory+"/emergency2")),
              'NE': len(os.listdir(directory+"/normal_emergency")),
              'BD': len(os.listdir(directory+"/background")),
-#             'Like': len(os.listdir(directory+"/like")),
+             'DE': len(os.listdir(directory+"/deaf emergency")),
 #             'Rock': len(os.listdir(directory+"/rock"))
              }
              
@@ -39,7 +40,7 @@ while True:
     cv2.putText(frame, "EmergencyTwo: "+str(count['E2']), (10, 140), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0), 1)
     cv2.putText(frame, "Normal: "+str(count['NE']), (10, 160), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0), 1)
     cv2.putText(frame, "BACKGROUND : "+str(count['BD']), (10, 180), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0), 1)
-#    cv2.putText(frame, "LIKE : "+str(count['Like']), (10, 200), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,0), 1)
+    cv2.putText(frame, "Deaf Emergency : "+str(count['DE']), (10, 200), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,0), 1)
 #    cv2.putText(frame, "ROCK : "+str(count['Rock']), (10, 220), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,0), 1)
     
     
@@ -79,8 +80,8 @@ while True:
             cv2.imwrite(directory+'normal_emergency/'+str(count['NE'])+'.jpg', roi)
     if interrupt & 0xFF == ord('b'):   
             cv2.imwrite(directory+'background/'+str(count['BD'])+'.jpg', roi)
-#    if interrupt & 0xFF == ord('l'):
-#            cv2.imwrite(directory+'like/'+str(count['Like'])+'.jpg', roi)
+    if interrupt & 0xFF == ord('d'):
+            cv2.imwrite(directory+'deaf emergency/'+str(count['DE'])+'.jpg', roi)
 #    if interrupt & 0xFF == ord('r'):
 #            cv2.imwrite(directory+'rock/'+str(count['Rock'])+'.jpg', roi)
     

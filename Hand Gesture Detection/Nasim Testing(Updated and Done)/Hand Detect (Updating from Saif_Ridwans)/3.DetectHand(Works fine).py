@@ -48,7 +48,7 @@ while True:
     prediction = {'Background': result[0][0], 
                   'Emergency 1': result[0][1], 
                   'Emergency 2': result[0][2],
-                  'Normal emergency': result[0][3]}
+                  'Normal emergency': result[0][3] }
     # Sorting based on top prediction
     prediction = sorted(prediction.items(), key=operator.itemgetter(1), reverse=True)
     
