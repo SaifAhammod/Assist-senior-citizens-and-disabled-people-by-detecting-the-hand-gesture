@@ -57,8 +57,8 @@ while True:
     # Displaying the predictions
     cv2.putText(frame, prediction[0][0], (10, 120), cv2.FONT_HERSHEY_PLAIN, 2, (225,0,0), 1)    
     cv2.imshow("Frame", frame)
-    firebase.put('/Status/-M2zMzoxqItNfwVJ3tUY','STATUS',prediction[0][0])
-    
+    firebase.put('/Status/Values','STATUS',prediction[0][0])
+
     
     interrupt = cv2.waitKey(10)
     if interrupt & 0xFF == 27: # esc key
