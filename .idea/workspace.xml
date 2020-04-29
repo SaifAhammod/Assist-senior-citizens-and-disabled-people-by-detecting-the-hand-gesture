@@ -13,6 +13,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="676" />
     <option name="width" value="697" />
@@ -24,6 +25,9 @@
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+=======
+  <component name="ProjectId" id="1aPQpiGGhYH7nPi2eL8URZgb6k8" />
+>>>>>>> 78736e8fea76c4aef9d4dbcc228d723fac0c68a7
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
@@ -52,10 +56,23 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
+<<<<<<< HEAD
   <component name="WindowStateProjectService">
     <state x="375" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1585414276973">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="375" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585414276973" />
+=======
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+>>>>>>> 78736e8fea76c4aef9d4dbcc228d723fac0c68a7
   </component>
 </project>

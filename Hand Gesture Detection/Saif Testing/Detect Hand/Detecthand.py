@@ -1,10 +1,12 @@
 import numpy as np
 from keras.models import model_from_json
+from firebase import firebase
 import operator
 import cv2
 import sys, os
 
 
+firebase = firebase.FirebaseApplication('https://assist-5d80b.firebaseio.com/', None)
 # Loading the model
 json_file = open("model-bw.json", "r")
 model_json = json_file.read()
@@ -55,6 +57,8 @@ while True:
     # Displaying the predictions
     cv2.putText(frame, prediction[0][0], (10, 120), cv2.FONT_HERSHEY_PLAIN, 2, (225,0,0), 1)    
     cv2.imshow("Frame", frame)
+    firebase.put('/Status/Values','STATUS',prediction[0][0])
+
     
     interrupt = cv2.waitKey(10)
     if interrupt & 0xFF == 27: # esc key
