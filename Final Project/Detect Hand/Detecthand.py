@@ -1,10 +1,31 @@
 import numpy as np
 from keras.models import model_from_json
 from firebase import firebase
+from tkinter import *
+from functools import partial
 import operator
 import cv2
 import sys, os
 
+
+def deletems():
+  tkWindow.destroy()
+
+#window
+tkWindow = Tk()  
+tkWindow.geometry('400x150')  
+tkWindow.title('ASSIST HARDWARE SETUP')
+
+#username label and text entry box
+usernameLabel = Label(tkWindow, text="User Name").grid(row=0, column=0)
+username = StringVar()
+usernameEntry = Entry(tkWindow, textvariable=username).grid(row=0, column=1)  
+
+
+#login button
+loginButton = Button(tkWindow, text="START", command=deletems).grid(row=1, column=0)  
+
+tkWindow.mainloop()
 
 firebase = firebase.FirebaseApplication('https://assist-5d80b.firebaseio.com/', None)
 # Loading the model
@@ -14,7 +35,7 @@ json_file.close()
 loaded_model = model_from_json(model_json)
 # load weights into new model
 loaded_model.load_weights("model-bw.h5")
-print("Loaded model from disk")
+#print("Loaded model from disk")
 
 cap = cv2.VideoCapture(0)
 
@@ -57,8 +78,11 @@ while True:
     # Displaying the predictions
     cv2.putText(frame, prediction[0][0], (10, 120), cv2.FONT_HERSHEY_PLAIN, 2, (225,0,0), 1)    
     cv2.imshow("Frame", frame)
-    firebase.put('/Status/Values','STATUS',prediction[0][0])
-
+    try:
+        firebase.put('/Status/Values',username.get(),prediction[0][0])
+    except:
+        print("Setup Failed")
+        break
     
     interrupt = cv2.waitKey(10)
     if interrupt & 0xFF == 27: # esc key
