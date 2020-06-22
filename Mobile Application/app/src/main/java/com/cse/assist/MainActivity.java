@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database=FirebaseDatabase.getInstance();
-    DatabaseReference Botstatus=database.getReference("Status");
+    DatabaseReference Botstatus=database.getReference("saif");
     EditText Status, Message;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +45,16 @@ public class MainActivity extends AppCompatActivity {
                     temp[i] = data.getValue().toString();
                     i++;
                 }
+               //Status.setText(temp[0]);
 
                 try {
-                    if(temp[0].equals("{STATUS=NORMAL}")){
+                    if(temp[0].equals("NORMAL")){
                         Status.setTextColor(Color.parseColor("#00ff00"));
                         Status.setText("NORMAL");
                         Message.setTextColor(Color.parseColor("#00ff00"));
                         Message.setText("Situation is normal. No need to worry about anything. Thank you for being with The Binary Knight");
                     }
-                    else if (temp[0].equals("{STATUS=EMERGENCY}")){
+                    else if (temp[0].equals("EMERGENCY")){
                         Status.setTextColor(Color.parseColor("#ff0000"));
                         Status.setText("EMERGENCY");
                         Message.setTextColor(Color.parseColor("#ff0000"));
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         // Issue the notification.
                         mNotificationManager.notify(notifyID, notification);
                     }
-                    else if(temp[0].equals("{STATUS=HELP}")){
+                    else if(temp[0].equals("HELP")){
                         Status.setTextColor(Color.parseColor("#ffff00"));
                         Status.setText("HELP");
                         Message.setTextColor(Color.parseColor("#ffff00"));

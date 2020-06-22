@@ -3,6 +3,7 @@ from keras.models import model_from_json
 from firebase import firebase
 from tkinter import *
 from functools import partial
+from gtts import gTTS
 import operator
 import cv2
 import sys, os
@@ -37,10 +38,19 @@ loaded_model = model_from_json(model_json)
 loaded_model.load_weights("model-bw.h5")
 #print("Loaded model from disk")
 
+
+#Audio Setup
+myText = "Emergency"
+language = 'en'
+
+output = gTTS(text=myText, lang=language, slow=False)
+
+output.save("output.mp3")
+
+
 cap = cv2.VideoCapture(0)
 
 # Category dictionary
-#categories = {'hi': 'Hello there', 'like': 'I like you', 'ok': 'Its Coool', 'rock': 'We will Rock You'}
 while True:
     _, frame = cap.read()
     # Simulating mirror image
@@ -78,16 +88,19 @@ while True:
     # Displaying the predictions
     cv2.putText(frame, prediction[0][0], (10, 120), cv2.FONT_HERSHEY_PLAIN, 2, (225,0,0), 1)    
     cv2.imshow("Frame", frame)
+    if(prediction[0][0]== 'EMERGENCY'): os.system("start output.mp3")  
+ 
+
     try:
-        firebase.put('/Status/Values',username.get(),prediction[0][0])
+        firebase.put(username.get(),'Values',prediction[0][0])
     except:
         print("Setup Failed")
         break
+        
     
     interrupt = cv2.waitKey(10)
     if interrupt & 0xFF == 27: # esc key
         break
-        
- 
+
 cap.release()
 cv2.destroyAllWindows()
