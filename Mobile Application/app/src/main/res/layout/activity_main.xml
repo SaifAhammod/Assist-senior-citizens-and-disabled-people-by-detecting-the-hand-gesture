@@ -17,6 +17,43 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="left"
+        android:text="USERNAME:"
+        android:textSize="20dp"
+        android:textColor="#D50000"
+        />
+    <EditText
+        android:id="@+id/username"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/edittext_background"
+        android:gravity="center"
+        android:textColor="#23FF00"
+        android:textSize="20dp"
+        />
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/viewstatus"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/button_background"
+        android:gravity="center"
+        android:textColor="#270000"
+        android:textSize="20dp"
+        android:text="View Status"
+
+        />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="left"
         android:text="STATUS:"
         android:textSize="20dp"
         android:textColor="#D50000"
